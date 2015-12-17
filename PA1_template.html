@@ -70,7 +70,7 @@ img {
 <h2>Loading and preprocessing the data</h2>
 <hr />
 <p>To begin we’ll read our data set into R and process the date variable.</p>
-<pre class="r"><code># unzip the activity.zip file from the repo into your working directory. 
+<pre class="r"><code># open the compressed file and read into r 
 act &lt;- read.csv(unz(&quot;activity.zip&quot;, &quot;activity.csv&quot;))
 
 act$date &lt;- as.Date(act$date) # convert date variable to Date object</code></pre>
@@ -109,7 +109,8 @@ ms_time &lt;- names(avg_by_interval[avg_by_interval == max(avg_by_interval)])</c
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
 <hr />
-<pre class="r"><code>sum_na &lt;- sum(is.na(act))</code></pre>
+<pre class="r"><code># total missing values in data frame
+sum_na &lt;- sum(is.na(act))</code></pre>
 <p>This data set has a significant amount of missing values. The total number of rows with NA values are 2304 or 13% of all rows. Some days are entirely devoid of step data.</p>
 <p>We can use a regression tree from the rpart package to impute missing values based on our date and interval variables.</p>
 <pre class="r"><code>library(rpart)

@@ -6,7 +6,7 @@ ___
 To begin we'll read our data set into R and process the date variable.
 
 ```r
-# unzip the activity.zip file from the repo into your working directory. 
+# open the compressed file and read into r 
 act <- read.csv(unz("activity.zip", "activity.csv"))
 
 act$date <- as.Date(act$date) # convert date variable to Date object
@@ -59,6 +59,7 @@ There is clearly a spike on the graph in the morning when approximately 206 step
 ___
 
 ```r
+# total missing values in data frame
 sum_na <- sum(is.na(act))
 ```
 This data set has a significant amount of missing values. The total number of rows with NA values are 2304 or 13% of all rows. Some days are entirely devoid of step data.
